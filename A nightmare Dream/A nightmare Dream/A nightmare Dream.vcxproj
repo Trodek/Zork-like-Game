@@ -82,11 +82,13 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="PlayerClass.cpp" />
     <ClCompile Include="RoomClass.cpp" />
+    <ClCompile Include="WorldClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ConnectionClass_Header.h" />
     <ClInclude Include="PlayerClass_Header.h" />
     <ClInclude Include="RoomClass_Header.h" />
+    <ClInclude Include="WorldClass_Header.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
