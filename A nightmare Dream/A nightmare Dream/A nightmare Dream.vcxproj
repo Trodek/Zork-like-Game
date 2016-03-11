@@ -79,13 +79,19 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ConnectionClass.cpp" />
+    <ClCompile Include="GameFunctions.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MapClass.cpp" />
     <ClCompile Include="PlayerClass.cpp" />
     <ClCompile Include="RoomClass.cpp" />
+    <ClCompile Include="GameLogicFunctions.cpp" />
     <ClCompile Include="WorldClass.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ConnectionClass_Header.h" />
+    <ClInclude Include="GameFunctions_Header.h" />
+    <ClInclude Include="GameLogicFunctions_Header.h" />
+    <ClInclude Include="MapClass_Header.h" />
+    <ClInclude Include="MemLeaks.h" />
     <ClInclude Include="PlayerClass_Header.h" />
     <ClInclude Include="RoomClass_Header.h" />
     <ClInclude Include="WorldClass_Header.h" />

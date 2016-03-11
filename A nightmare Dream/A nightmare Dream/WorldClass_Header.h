@@ -3,17 +3,17 @@
 
 #include "ConnectionClass_Header.h"
 #include "PlayerClass_Header.h"
-#include "RoomClass_Header.h"
+#include "MapClass_Header.h"
 
 class World {
 
 public:
-	Room* places;
-	Player character;
-	World(Player player, Room* rooms);
+	Map* room_map;
+	Player* character;
+	World();
+	World(Player* player, Map* bcn);
 
 
 };
 
-void CreateWorld(World& barcelona);
 #endif

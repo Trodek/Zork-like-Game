@@ -6,8 +6,10 @@
 
 using namespace std;
 
-World::World(Player player, Room* rooms) : character(player), places(rooms){}
-
-void CreateWorld(World& barelona){
-
+World::World(){
+	character = NULL;
+	room_map = NULL;
 }
+
+World::World(Player* player, Map* bcn) : character(player), room_map(bcn){}
+

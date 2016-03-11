@@ -4,23 +4,40 @@
 #include "ConnectionClass_Header.h"
 #include <iostream>
 
+
 class Room {
 
 	std::string name;
 	std::string basic_description;
+	class Connection{
+
+		bool connected;
+		bool closed;
+		Room* next_room;
+		int food_consumed;
+
+	public:
+
+		Connection();
+		Connection(bool is_connected, bool close_door, Room* following_room, int hungry_decrementor);
+		void set_connection(bool is_connected, bool close_door, Room* following, int food);
+		bool get_connected() const;
+		bool get_closed() const;
+		Room* get_next_room() const;
+		int get_food_consumed() const;
+	};
+
+public:
+	
 	Connection north;
 	Connection south;
 	Connection east;
 	Connection west;
 
-public:
-	Room(std::string type, std::string info, Connection to_north, Connection to_south, Connection to_east, Connection to_west);
+	Room();
+	Room(const std::string& type, const std::string& info);
 	std::string get_name() const;
 	std::string get_description() const;
-	Connection get_north() const;
-	Connection get_south() const;
-	Connection get_east() const;
-	Connection get_west() const;
 	
 
 };

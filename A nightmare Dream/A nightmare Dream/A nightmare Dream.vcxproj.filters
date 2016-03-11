@@ -30,6 +30,15 @@
     <ClCompile Include="WorldClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MapClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameLogicFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PlayerClass_Header.h">
@@ -38,10 +47,19 @@
     <ClInclude Include="RoomClass_Header.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="ConnectionClass_Header.h">
+    <ClInclude Include="WorldClass_Header.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="WorldClass_Header.h">
+    <ClInclude Include="MapClass_Header.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MemLeaks.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameFunctions_Header.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameLogicFunctions_Header.h">
       <Filter>Source Files</Filter>
     </ClInclude>
   </ItemGroup>
