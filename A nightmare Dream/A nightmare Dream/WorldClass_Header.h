@@ -1,7 +1,6 @@
 #ifndef _WorldClass_
 #define _WorldClass_
 
-#include "ConnectionClass_Header.h"
 #include "PlayerClass_Header.h"
 #include "MapClass_Header.h"
 
