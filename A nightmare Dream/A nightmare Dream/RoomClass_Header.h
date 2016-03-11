@@ -1,31 +1,34 @@
 #ifndef _RoomClass_
 #define _RoomClass_
 
-#include "ConnectionClass_Header.h"
 #include <iostream>
 
+class Room;
+
+
+class Connection{
+
+	bool connected;
+	bool closed;
+	Room* next_room;
+	int food_consumed;
+
+public:
+
+	Connection();
+	Connection(bool is_connected, bool close_door, Room* following_room, int hungry_decrementor);
+	void set_connection(bool is_connected, bool close_door, Room* following, int food);
+	bool get_connected() const;
+	bool get_closed() const;
+	Room* get_next_room() const;
+	int get_food_consumed() const;
+};
 
 class Room {
 
 	std::string name;
 	std::string basic_description;
-	class Connection{
-
-		bool connected;
-		bool closed;
-		Room* next_room;
-		int food_consumed;
-
-	public:
-
-		Connection();
-		Connection(bool is_connected, bool close_door, Room* following_room, int hungry_decrementor);
-		void set_connection(bool is_connected, bool close_door, Room* following, int food);
-		bool get_connected() const;
-		bool get_closed() const;
-		Room* get_next_room() const;
-		int get_food_consumed() const;
-	};
+	
 
 public:
 	
