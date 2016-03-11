@@ -41,26 +41,26 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="PlayerClass_Header.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RoomClass_Header.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldClass_Header.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MapClass_Header.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MemLeaks.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameFunctions_Header.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameLogicFunctions_Header.h">
-      <Filter>Source Files</Filter>
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapClass_Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MemLeaks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerClass_Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomClass_Header.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WorldClass_Header.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
