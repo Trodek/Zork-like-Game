@@ -72,11 +72,11 @@ void CreateWorld(World* barcelona){
 	barcelona->room_map->monjuic_palace->north.set_connection(true, true, barcelona->room_map->sants, 2);
 		//Sants
 	barcelona->room_map->sants->east.set_connection(true, false, barcelona->room_map->placa_catalunya, 3);
-	barcelona->room_map->sants->west.set_connection(true, false, barcelona->room_map->camp_nou, 2);
+	barcelona->room_map->sants->west.set_connection(true, true, barcelona->room_map->camp_nou, 2);
 	barcelona->room_map->sants->south.set_connection(true, true, barcelona->room_map->monjuic_palace, 2);
 		//Camp Nou
 	barcelona->room_map->camp_nou->east.set_connection(true, false, barcelona->room_map->sagrada_familia, 6);
-	barcelona->room_map->camp_nou->south.set_connection(true, false, barcelona->room_map->sants, 2);
+	barcelona->room_map->camp_nou->south.set_connection(true, true, barcelona->room_map->sants, 2);
 		//Parc Guell
 	barcelona->room_map->parc_guell->south.set_connection(true, false, barcelona->room_map->sagrada_familia, 3);
 
@@ -137,9 +137,15 @@ void GameLoop(World* barcelona){
 								if (no_closed(input_interpreted, barcelona->character->actual)){
 									barcelona->character->change_room(barcelona->character->actual->north.get_next_room());
 								}
-								else cout << endl << endl << "The door is locked!" << endl << endl;
+								else {
+									cout << endl << "The door is locked!" << endl;
+									room_changed = false;
+								}
 							}
-							else cout << endl << endl << "I can't move in this direction." << endl << endl;
+							else {
+								cout << endl << "I can't move in this direction." << endl;
+								room_changed = false;
+							}
 						} 
 						break;
 			case south: {
@@ -147,30 +153,48 @@ void GameLoop(World* barcelona){
 								if (no_closed(input_interpreted, barcelona->character->actual)){
 									barcelona->character->change_room(barcelona->character->actual->south.get_next_room());
 								}
-								else cout << endl << endl << "The door is locked!" << endl << endl;
+								else {
+									cout << endl << "The door is locked!" << endl;
+									room_changed = false;
+								}
 							}
-							else cout << endl << endl << "I can't move in this direction." << endl << endl;
-			}
+							else {
+								cout << endl << "I can't move in this direction." << endl;
+								room_changed = false;
+							}
+						}
 						break;
 			case east: {
 						   if (can_move(input_interpreted, barcelona->character->actual)){
 							   if (no_closed(input_interpreted, barcelona->character->actual)){
 								   barcelona->character->change_room(barcelona->character->actual->east.get_next_room());
 							   }
-							   else cout << endl << endl << "The door is locked!" << endl << endl;
+							   else {
+								   cout << endl << "The door is locked!" << endl;
+								   room_changed = false;
+							   }
 						   }
-						   else cout << endl << endl << "I can't move in this direction." << endl << endl;
-			}
+						   else {
+							   cout << endl << "I can't move in this direction." << endl;
+							   room_changed = false;
+						   }
+						}
 						break;
 			case west: {
 						   if (can_move(input_interpreted, barcelona->character->actual)){
 							   if (no_closed(input_interpreted, barcelona->character->actual)){
 								   barcelona->character->change_room(barcelona->character->actual->west.get_next_room());
 							   }
-							   else cout << endl << endl << "The door is locked!" << endl << endl;
+							   else {
+								   cout << endl << "The door is locked!" << endl;
+								   room_changed = false;
+							   }
 						   }
-						   else cout << endl << endl << "I can't move in this direction." << endl << endl;
-			}
+						   else {
+							   cout << endl << "I can't move in this direction." << endl;
+							   room_changed = false;
+						   }
+						}
 						break;
 			case open_door: cout << open_connection(barcelona->character->actual) << endl; room_changed = false; break;
 			case not_recognised: cout << endl << "I don't recognise that order." << endl; room_changed = false; break;

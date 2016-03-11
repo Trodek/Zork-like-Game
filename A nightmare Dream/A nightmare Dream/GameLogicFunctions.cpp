@@ -60,6 +60,7 @@ string open_connection(Room* actual_room){
 	cout << endl << ">>What door do you want to open? " << endl;
 	string direction_input;
 	getline(cin, direction_input);
+	cout << endl;
 	actions interpreted = interpret_input(direction_input);
 	if (is_a_direction(interpreted)){
 		if (can_move(interpreted, actual_room)){
