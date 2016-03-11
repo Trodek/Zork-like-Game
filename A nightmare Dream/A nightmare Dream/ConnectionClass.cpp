@@ -32,3 +32,7 @@ Room* Connection::get_next_room() const{
 int Connection::get_food_consumed() const{
 	return food_consumed;
 }
+
+void Connection::open_door(){
+	closed = false;
+}

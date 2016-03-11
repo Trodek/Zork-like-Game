@@ -38,11 +38,11 @@ void CreateWorld(World* barcelona){
 		//kitchen
 	barcelona->room_map->kitchen->east.set_connection(true, false, barcelona->room_map->bedroom, 1);
 	barcelona->room_map->kitchen->south.set_connection(true, false, barcelona->room_map->parents_room, 1);
-	barcelona->room_map->kitchen->west.set_connection(true, false, barcelona->room_map->house_street, 1);
+	barcelona->room_map->kitchen->west.set_connection(true, true, barcelona->room_map->house_street, 1);
 		//parents room
 	barcelona->room_map->parents_room->north.set_connection(true, false, barcelona->room_map->kitchen, 1);
 		//house street
-	barcelona->room_map->house_street->east.set_connection(true, false, barcelona->room_map->kitchen, 1);
+	barcelona->room_map->house_street->east.set_connection(true, true, barcelona->room_map->kitchen, 1);
 	barcelona->room_map->house_street->south.set_connection(true, false, barcelona->room_map->sagrada_familia, 2);
 		//sagrada familia
 	barcelona->room_map->sagrada_familia->north.set_connection(true, false, barcelona->room_map->parc_guell, 3);
@@ -58,22 +58,22 @@ void CreateWorld(World* barcelona){
 	barcelona->room_map->parc_ciutadella->west.set_connection(true, false, barcelona->room_map->harbor, 3);
 		//harbor
 	barcelona->room_map->harbor->east.set_connection(true, false, barcelona->room_map->parc_ciutadella, 3);
-	barcelona->room_map->harbor->north.set_connection(true, false, barcelona->room_map->liceu, 1);
+	barcelona->room_map->harbor->north.set_connection(true, true, barcelona->room_map->liceu, 1);
 		//Liceu
-	barcelona->room_map->liceu->north.set_connection(true, false, barcelona->room_map->placa_catalunya, 2);
-	barcelona->room_map->liceu->south.set_connection(true, false, barcelona->room_map->harbor, 2);
+	barcelona->room_map->liceu->north.set_connection(true, true, barcelona->room_map->placa_catalunya, 2);
+	barcelona->room_map->liceu->south.set_connection(true, true, barcelona->room_map->harbor, 2);
 		//plaça catalunya
 	barcelona->room_map->placa_catalunya->north.set_connection(true, false, barcelona->room_map->sants, 4);
 	barcelona->room_map->placa_catalunya->east.set_connection(true, false, barcelona->room_map->placa_glories, 2);
-	barcelona->room_map->placa_catalunya->west.set_connection(true, false, barcelona->room_map->monjuic_palace, 4);
-	barcelona->room_map->placa_catalunya->south.set_connection(true, false, barcelona->room_map->liceu, 2);
+	barcelona->room_map->placa_catalunya->west.set_connection(true, true, barcelona->room_map->monjuic_palace, 4);
+	barcelona->room_map->placa_catalunya->south.set_connection(true, true, barcelona->room_map->liceu, 2);
 		//Montjuic
-	barcelona->room_map->monjuic_palace->east.set_connection(true, false, barcelona->room_map->placa_catalunya, 4);
-	barcelona->room_map->monjuic_palace->north.set_connection(true, false, barcelona->room_map->sants, 2);
+	barcelona->room_map->monjuic_palace->east.set_connection(true, true, barcelona->room_map->placa_catalunya, 4);
+	barcelona->room_map->monjuic_palace->north.set_connection(true, true, barcelona->room_map->sants, 2);
 		//Sants
 	barcelona->room_map->sants->east.set_connection(true, false, barcelona->room_map->placa_catalunya, 3);
 	barcelona->room_map->sants->west.set_connection(true, false, barcelona->room_map->camp_nou, 2);
-	barcelona->room_map->sants->south.set_connection(true, false, barcelona->room_map->monjuic_palace, 2);
+	barcelona->room_map->sants->south.set_connection(true, true, barcelona->room_map->monjuic_palace, 2);
 		//Camp Nou
 	barcelona->room_map->camp_nou->east.set_connection(true, false, barcelona->room_map->sagrada_familia, 6);
 	barcelona->room_map->camp_nou->south.set_connection(true, false, barcelona->room_map->sants, 2);
@@ -118,30 +118,28 @@ void GameLoop(World* barcelona){
 	cout << "Welcome to A Nightmare Dream. A text base adventure based in Barcelona." << endl;
 
 	bool end = false;
+	bool room_changed = true;
 	string input;
 	actions input_interpreted;
 	while (!end){
-		cout << endl << "I'm in the " << barcelona->character->actual->get_name() << endl << endl;
-		cout << barcelona->character->actual->get_description() << endl << endl;
-		cout << ">> What should I do?" << endl;
+		if (room_changed){
+			cout << endl << "I'm in the " << barcelona->character->actual->get_name()<<'.' << endl << endl;
+			cout << barcelona->character->actual->get_description() << endl;
+		}
+		room_changed = true;
+		cout << endl<< ">> What should I do?" << endl;
 		getline(cin, input);
 		transform(input.begin(), input.end(), input.begin(), ::tolower);
-		if (input == "n" || input == "north" || input == "go north") input_interpreted = north;
-		else if (input == "s" || input == "south" || input == "go south") input_interpreted = south;
-		else if (input == "e" || input == "east" || input == "go east") input_interpreted = east;
-		else if (input == "w" || input == "west" || input == "go west") input_interpreted = west;
-		else if (input == "q" || input == "quit" || input == "exit") input_interpreted = quit;
-		else if (input == "open door" || input == "open") input_interpreted = open_door;
-		else input_interpreted = not_recognised;
+		input_interpreted = interpret_input(input);
 		switch (input_interpreted){
 			case north: {
 							if (can_move(input_interpreted, barcelona->character->actual)){
 								if (no_closed(input_interpreted, barcelona->character->actual)){
 									barcelona->character->change_room(barcelona->character->actual->north.get_next_room());
 								}
-								else cout <<endl<< "The door is locked!"<<endl<<endl;
+								else cout << endl << endl << "The door is locked!" << endl << endl;
 							}
-							else cout << endl << "I can't move in this direction" << endl << endl;
+							else cout << endl << endl << "I can't move in this direction." << endl << endl;
 						} 
 						break;
 			case south: {
@@ -149,9 +147,9 @@ void GameLoop(World* barcelona){
 								if (no_closed(input_interpreted, barcelona->character->actual)){
 									barcelona->character->change_room(barcelona->character->actual->south.get_next_room());
 								}
-								else cout << endl << "The door is locked!" << endl << endl;
+								else cout << endl << endl << "The door is locked!" << endl << endl;
 							}
-							else cout << endl << "I can't move in this direction" << endl << endl;
+							else cout << endl << endl << "I can't move in this direction." << endl << endl;
 			}
 						break;
 			case east: {
@@ -159,9 +157,9 @@ void GameLoop(World* barcelona){
 							   if (no_closed(input_interpreted, barcelona->character->actual)){
 								   barcelona->character->change_room(barcelona->character->actual->east.get_next_room());
 							   }
-							   else cout << endl << "The door is locked!" << endl << endl;
+							   else cout << endl << endl << "The door is locked!" << endl << endl;
 						   }
-						   else cout << endl << "I can't move in this direction" << endl << endl;
+						   else cout << endl << endl << "I can't move in this direction." << endl << endl;
 			}
 						break;
 			case west: {
@@ -169,14 +167,15 @@ void GameLoop(World* barcelona){
 							   if (no_closed(input_interpreted, barcelona->character->actual)){
 								   barcelona->character->change_room(barcelona->character->actual->west.get_next_room());
 							   }
-							   else cout << endl << "The door is locked!" << endl << endl;
+							   else cout << endl << endl << "The door is locked!" << endl << endl;
 						   }
-						   else cout << endl << "I can't move in this direction" << endl << endl;
+						   else cout << endl << endl << "I can't move in this direction." << endl << endl;
 			}
 						break;
+			case open_door: cout << open_connection(barcelona->character->actual) << endl; room_changed = false; break;
+			case not_recognised: cout << endl << "I don't recognise that order." << endl; room_changed = false; break;
+			case look_arround: look_room(barcelona->character->actual); room_changed = false; break;
 			case quit: end = true; break;
-			case open_door: cout << endl << "your mum legs are open now :P" << endl; break;
-			case not_recognised: cout << endl << "I don't catch you bro" << endl; break;
 		}
 
 	}

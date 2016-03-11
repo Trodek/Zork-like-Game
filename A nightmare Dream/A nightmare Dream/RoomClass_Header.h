@@ -22,6 +22,7 @@ public:
 	bool get_closed() const;
 	Room* get_next_room() const;
 	int get_food_consumed() const;
+	void open_door();
 };
 
 class Room {
