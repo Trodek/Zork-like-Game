@@ -15,6 +15,7 @@ actions interpret_input(const string input){
 	else if (input == "q" || input == "quit" || input == "exit") return quit;
 	else if (input == "open door" || input == "open") return open_door;
 	else if (input == "look arround" || input == "look") return look_arround;
+	else if (input == "help") return help;
 	return not_recognised;
 }
 
@@ -134,4 +135,18 @@ actions find_connection_direction(Room* actual_room, Room* next_room){
 	else if (next_room->east.get_next_room() == actual_room) return east;
 	else if (next_room->west.get_next_room() == actual_room) return west;
 	else if (next_room->south.get_next_room() == actual_room) return south;
+}
+
+void print_help(){
+	cout << endl << " ----- How to play -----" << endl;
+	cout << endl << "To move arround the rooms you can use any of this orders:" << endl;
+	cout << "  - The first leter of the direction." << endl;
+	cout << "  - The name of the direction." << endl;
+	cout << "  - The verb 'go' followed by the first letter of the direction." << endl;
+	cout << "  - The verb 'go' followed by a direction name." << endl;
+	cout << endl << "To look arround a room, you can use 'look' or 'look arround'." << endl;
+	cout << endl << "To open a door, you first need to write the order 'open' or 'open door' and then a direction will be requested." << endl;
+	cout << endl << "You can display this text again using 'help'." << endl;
+	cout << endl << "To exit the game, you can use 'exit', 'quit' or 'q' orders." << endl;
+	cout << endl << " -----------------------" << endl;
 }

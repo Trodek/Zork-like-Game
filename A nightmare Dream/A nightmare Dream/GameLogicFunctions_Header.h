@@ -19,4 +19,6 @@ bool is_a_direction(actions interpreted);
 
 actions find_connection_direction(Room* actual_room, Room* next_room);
 
+void print_help();
+
 #endif

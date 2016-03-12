@@ -116,6 +116,7 @@ void CleanWorld(World* barcelona){
 void GameLoop(World* barcelona){
 
 	cout << "Welcome to A Nightmare Dream. A text base adventure based in Barcelona." << endl;
+	print_help();
 
 	bool end = false;
 	bool room_changed = true;
@@ -199,6 +200,7 @@ void GameLoop(World* barcelona){
 			case open_door: cout << open_connection(barcelona->character->actual) << endl; room_changed = false; break;
 			case not_recognised: cout << endl << "I don't recognise that order." << endl; room_changed = false; break;
 			case look_arround: look_room(barcelona->character->actual); room_changed = false; break;
+			case help: print_help(); room_changed = false; break;
 			case quit: end = true; break;
 		}
 
