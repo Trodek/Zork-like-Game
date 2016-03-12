@@ -231,6 +231,7 @@ void print_help(){
 	cout << "  - The verb 'go' followed by a direction name." << endl;
 	cout << endl << "To look arround a room, you can use 'look' or 'look arround'." << endl;
 	cout << endl << "To open a door, you first need to write the order 'open' or 'open door' and then a direction will be requested." << endl;
+	cout << endl << "To close a door, you must follow the same structure: 'close' or 'close door' and then the a direction will be requested." << endl;
 	cout << endl << "You can display this text again using 'help'." << endl;
 	cout << endl << "To exit the game, you can use 'exit', 'quit' or 'q' orders." << endl;
 	cout << endl << " -----------------------" << endl;

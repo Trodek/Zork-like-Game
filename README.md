@@ -38,3 +38,7 @@ To exit the game, you can use "exit", "quit" or "q" orders.
 * Combine statue parts
 * Keys for doors
 * UI improvement
+
+#Author
+
+Iban Mas Ortega (GitHub: https://github.com/Trodek)
