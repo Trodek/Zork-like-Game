@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <algorithm>
 #include "GameFunctions_Header.h"
 #include "GameLogicFunctions_Header.h"
 #include "RoomClass_Header.h"
@@ -60,6 +61,7 @@ string open_connection(Room* actual_room){
 	cout << endl << ">>What door do you want to open? " << endl;
 	string direction_input;
 	getline(cin, direction_input);
+	transform(direction_input.begin(), direction_input.end(), direction_input.begin(), ::tolower);
 	cout << endl;
 	actions interpreted = interpret_input(direction_input);
 	if (is_a_direction(interpreted)){
