@@ -20,13 +20,15 @@ To move arround the rooms you can use any of this orders:
 * The verb "go" followed by the first letter of the direction (go n/go e/go w/go s).
 * The verb "go" followed by a direction name (go north/go east/go west/go south).  
 
-To exit the game, you can use "exit", "quit" or "q" orders.
-
 To look arround a room, you can use "look" or "look arround".
 
 To open a door, you first need to write the order "open" or "open door" and then a direction will be requested (the direction can be introduced as explained before).
 
-#Missing Features
+To close a door, you must follow the same structure: "close" or close door" and then the a direction will be requested.
+
+To exit the game, you can use "exit", "quit" or "q" orders.
+
+#Next Coming Features
 
 * Player hunger system
 * Objects and inventory

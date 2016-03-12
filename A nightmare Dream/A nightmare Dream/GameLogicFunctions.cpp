@@ -14,6 +14,7 @@ actions interpret_input(const string input){
 	else if (input == "w" || input == "west" || input == "go west" || input == "go w") return west;
 	else if (input == "q" || input == "quit" || input == "exit") return quit;
 	else if (input == "open door" || input == "open") return open_door;
+	else if (input == "close" || input == "close door") return close_door;
 	else if (input == "look arround" || input == "look") return look_arround;
 	else if (input == "help") return help;
 	return not_recognised;
@@ -36,6 +37,16 @@ bool no_closed(actions direction, Room* actual_room){
 	case south: return !(actual_room->south.get_closed()); break;
 	}
 }
+
+bool can_be_closed(actions direction, Room* actual_room){
+	switch (direction){
+	case north: return (actual_room->north.get_can_close()); break;
+	case east: return (actual_room->east.get_can_close()); break;
+	case west: return (actual_room->west.get_can_close()); break;
+	case south: return (actual_room->south.get_can_close()); break;
+	}
+}
+
 
 void look_room(Room* actual_room){
 	cout << endl << "From here in the " << actual_room->get_name() << " I can move to:";
@@ -67,58 +78,132 @@ string open_connection(Room* actual_room){
 	actions interpreted = interpret_input(direction_input);
 	if (is_a_direction(interpreted)){
 		if (can_move(interpreted, actual_room)){
-			if (!(no_closed(interpreted, actual_room)))
-			switch (interpreted){
+			if (!(no_closed(interpreted, actual_room))){
+				switch (interpreted){
 				case north:{
 							   Room* next_room = actual_room->north.get_next_room();
 							   actual_room->north.open_door();
 							   actions door_direction_next_room = find_connection_direction(actual_room, next_room);
 							   switch (door_direction_next_room){
-									case north: next_room->north.open_door(); break;
-									case south:next_room->south.open_door(); break;
-									case east:next_room->east.open_door(); break;
-									case west:next_room->west.open_door(); break;
+							   case north: next_room->north.open_door(); break;
+							   case south:next_room->south.open_door(); break;
+							   case east:next_room->east.open_door(); break;
+							   case west:next_room->west.open_door(); break;
 							   }
-							}
-							break;
+				}
+					break;
 				case south:{
 							   Room* next_room = actual_room->south.get_next_room();
 							   actual_room->south.open_door();
 							   actions door_direction_next_room = find_connection_direction(actual_room, next_room);
 							   switch (door_direction_next_room){
-									case north: next_room->north.open_door(); break;
-									case south:next_room->south.open_door(); break;
-									case east:next_room->east.open_door(); break;
-									case west:next_room->west.open_door(); break;
+							   case north: next_room->north.open_door(); break;
+							   case south:next_room->south.open_door(); break;
+							   case east:next_room->east.open_door(); break;
+							   case west:next_room->west.open_door(); break;
 							   }
 				}
-							break;
+					break;
 				case east:{
 							  Room* next_room = actual_room->east.get_next_room();
 							  actual_room->east.open_door();
 							  actions door_direction_next_room = find_connection_direction(actual_room, next_room);
 							  switch (door_direction_next_room){
-									case north: next_room->north.open_door(); break;
-									case south:next_room->south.open_door(); break;
-									case east:next_room->east.open_door(); break;
-									case west:next_room->west.open_door(); break;
+							  case north: next_room->north.open_door(); break;
+							  case south:next_room->south.open_door(); break;
+							  case east:next_room->east.open_door(); break;
+							  case west:next_room->west.open_door(); break;
 							  }
 				}
-							break;
+					break;
 				case west:{
 							  Room* next_room = actual_room->west.get_next_room();
 							  actual_room->west.open_door();
 							  actions door_direction_next_room = find_connection_direction(actual_room, next_room);
 							  switch (door_direction_next_room){
-									case north: next_room->north.open_door(); break;
-									case south:next_room->south.open_door(); break;
-									case east:next_room->east.open_door(); break;
-									case west:next_room->west.open_door(); break;
+							  case north: next_room->north.open_door(); break;
+							  case south:next_room->south.open_door(); break;
+							  case east:next_room->east.open_door(); break;
+							  case west:next_room->west.open_door(); break;
 							  }
 				}
-							break;
+					break;
+				}
+				return "The door is open now.";
 			}
-			return "The door is open now.";
+			else return "The door is already open.";
+		}
+		else return "There isn't any door in this direction.";
+	}
+	else return "I don't recognise this direction.";
+}
+
+string close_connection(Room* actual_room){
+	cout << endl << ">>What door do you want to close? " << endl;
+	string direction_input;
+	getline(cin, direction_input);
+	transform(direction_input.begin(), direction_input.end(), direction_input.begin(), ::tolower);
+	cout << endl;
+	actions interpreted = interpret_input(direction_input);
+	if (is_a_direction(interpreted)){
+		if (can_move(interpreted, actual_room)){
+			if ((no_closed(interpreted, actual_room))){
+				if (can_be_closed(interpreted, actual_room)){
+					switch (interpreted){
+					case north:{
+								   Room* next_room = actual_room->north.get_next_room();
+								   actual_room->north.close_door();
+								   actions door_direction_next_room = find_connection_direction(actual_room, next_room);
+								   switch (door_direction_next_room){
+								   case north: next_room->north.close_door(); break;
+								   case south:next_room->south.close_door(); break;
+								   case east:next_room->east.close_door(); break;
+								   case west:next_room->west.close_door(); break;
+								   }
+					}
+						break;
+					case south:{
+								   Room* next_room = actual_room->south.get_next_room();
+								   actual_room->south.close_door();
+								   actions door_direction_next_room = find_connection_direction(actual_room, next_room);
+								   switch (door_direction_next_room){
+								   case north: next_room->north.close_door(); break;
+								   case south:next_room->south.close_door(); break;
+								   case east:next_room->east.close_door(); break;
+								   case west:next_room->west.close_door(); break;
+								   }
+					}
+						break;
+					case east:{
+								  Room* next_room = actual_room->east.get_next_room();
+								  actual_room->east.close_door();
+								  actions door_direction_next_room = find_connection_direction(actual_room, next_room);
+								  switch (door_direction_next_room){
+								  case north: next_room->north.close_door(); break;
+								  case south:next_room->south.close_door(); break;
+								  case east:next_room->east.close_door(); break;
+								  case west:next_room->west.close_door(); break;
+								  }
+					}
+						break;
+					case west:{
+								  Room* next_room = actual_room->west.get_next_room();
+								  actual_room->west.close_door();
+								  actions door_direction_next_room = find_connection_direction(actual_room, next_room);
+								  switch (door_direction_next_room){
+								  case north: next_room->north.close_door(); break;
+								  case south:next_room->south.close_door(); break;
+								  case east:next_room->east.close_door(); break;
+								  case west:next_room->west.close_door(); break;
+								  }
+					}
+						break;
+					}
+					return "The door is close now.";
+				}
+				else return "This door can't be closed.";
+			}
+			else return "The door is already closed.";
 		}
 		else return "There isn't any door in this direction.";
 	}

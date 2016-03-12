@@ -34,51 +34,51 @@ void CreateWorld(World* barcelona){
 
 	//Setting the connections between rooms:
 		//bedroom
-	barcelona->room_map->bedroom->north.set_connection(true, false, barcelona->room_map->kitchen, 1);
+	barcelona->room_map->bedroom->north.set_connection(true, false, true, barcelona->room_map->kitchen, 1);
 		//kitchen
-	barcelona->room_map->kitchen->east.set_connection(true, false, barcelona->room_map->bedroom, 1);
-	barcelona->room_map->kitchen->south.set_connection(true, false, barcelona->room_map->parents_room, 1);
-	barcelona->room_map->kitchen->west.set_connection(true, true, barcelona->room_map->house_street, 1);
+	barcelona->room_map->kitchen->east.set_connection(true, false, true, barcelona->room_map->bedroom, 1);
+	barcelona->room_map->kitchen->south.set_connection(true, false, true, barcelona->room_map->parents_room, 1);
+	barcelona->room_map->kitchen->west.set_connection(true, true, true, barcelona->room_map->house_street, 1);
 		//parents room
-	barcelona->room_map->parents_room->north.set_connection(true, false, barcelona->room_map->kitchen, 1);
+	barcelona->room_map->parents_room->north.set_connection(true, false, true, barcelona->room_map->kitchen, 1);
 		//house street
-	barcelona->room_map->house_street->east.set_connection(true, true, barcelona->room_map->kitchen, 1);
-	barcelona->room_map->house_street->south.set_connection(true, false, barcelona->room_map->sagrada_familia, 2);
+	barcelona->room_map->house_street->east.set_connection(true, true, true, barcelona->room_map->kitchen, 1);
+	barcelona->room_map->house_street->south.set_connection(true, false, false, barcelona->room_map->sagrada_familia, 2);
 		//sagrada familia
-	barcelona->room_map->sagrada_familia->north.set_connection(true, false, barcelona->room_map->parc_guell, 3);
-	barcelona->room_map->sagrada_familia->east.set_connection(true, false, barcelona->room_map->house_street, 2);
-	barcelona->room_map->sagrada_familia->west.set_connection(true, false, barcelona->room_map->camp_nou, 6);
-	barcelona->room_map->sagrada_familia->south.set_connection(true, false, barcelona->room_map->placa_glories, 2);
+	barcelona->room_map->sagrada_familia->north.set_connection(true, false, false, barcelona->room_map->parc_guell, 3);
+	barcelona->room_map->sagrada_familia->east.set_connection(true, false, false, barcelona->room_map->house_street, 2);
+	barcelona->room_map->sagrada_familia->west.set_connection(true, false, false, barcelona->room_map->camp_nou, 6);
+	barcelona->room_map->sagrada_familia->south.set_connection(true, false, false, barcelona->room_map->placa_glories, 2);
 		//plaça glories
-	barcelona->room_map->placa_glories->north.set_connection(true, false, barcelona->room_map->sagrada_familia, 2);
-	barcelona->room_map->placa_glories->west.set_connection(true, false, barcelona->room_map->placa_catalunya, 2);
-	barcelona->room_map->placa_glories->south.set_connection(true, false, barcelona->room_map->parc_ciutadella, 3);
+	barcelona->room_map->placa_glories->north.set_connection(true, false, false, barcelona->room_map->sagrada_familia, 2);
+	barcelona->room_map->placa_glories->west.set_connection(true, false, false, barcelona->room_map->placa_catalunya, 2);
+	barcelona->room_map->placa_glories->south.set_connection(true, false, false, barcelona->room_map->parc_ciutadella, 3);
 		//parc de la ciutadella
-	barcelona->room_map->parc_ciutadella->north.set_connection(true, false, barcelona->room_map->placa_glories, 3);
-	barcelona->room_map->parc_ciutadella->west.set_connection(true, false, barcelona->room_map->harbor, 3);
+	barcelona->room_map->parc_ciutadella->north.set_connection(true, false, false, barcelona->room_map->placa_glories, 3);
+	barcelona->room_map->parc_ciutadella->west.set_connection(true, false, false, barcelona->room_map->harbor, 3);
 		//harbor
-	barcelona->room_map->harbor->east.set_connection(true, false, barcelona->room_map->parc_ciutadella, 3);
-	barcelona->room_map->harbor->north.set_connection(true, true, barcelona->room_map->liceu, 1);
+	barcelona->room_map->harbor->east.set_connection(true, false, false, barcelona->room_map->parc_ciutadella, 3);
+	barcelona->room_map->harbor->north.set_connection(true, true, true, barcelona->room_map->liceu, 1);
 		//Liceu
-	barcelona->room_map->liceu->north.set_connection(true, true, barcelona->room_map->placa_catalunya, 2);
-	barcelona->room_map->liceu->south.set_connection(true, true, barcelona->room_map->harbor, 2);
+	barcelona->room_map->liceu->north.set_connection(true, true, true, barcelona->room_map->placa_catalunya, 2);
+	barcelona->room_map->liceu->south.set_connection(true, true, true, barcelona->room_map->harbor, 2);
 		//plaça catalunya
-	barcelona->room_map->placa_catalunya->north.set_connection(true, false, barcelona->room_map->sants, 4);
-	barcelona->room_map->placa_catalunya->east.set_connection(true, false, barcelona->room_map->placa_glories, 2);
-	barcelona->room_map->placa_catalunya->west.set_connection(true, true, barcelona->room_map->monjuic_palace, 4);
-	barcelona->room_map->placa_catalunya->south.set_connection(true, true, barcelona->room_map->liceu, 2);
+	barcelona->room_map->placa_catalunya->north.set_connection(true, false, false, barcelona->room_map->sants, 4);
+	barcelona->room_map->placa_catalunya->east.set_connection(true, false, false, barcelona->room_map->placa_glories, 2);
+	barcelona->room_map->placa_catalunya->west.set_connection(true, true, true, barcelona->room_map->monjuic_palace, 4);
+	barcelona->room_map->placa_catalunya->south.set_connection(true, true, true, barcelona->room_map->liceu, 2);
 		//Montjuic
-	barcelona->room_map->monjuic_palace->east.set_connection(true, true, barcelona->room_map->placa_catalunya, 4);
-	barcelona->room_map->monjuic_palace->north.set_connection(true, true, barcelona->room_map->sants, 2);
+	barcelona->room_map->monjuic_palace->east.set_connection(true, true, true, barcelona->room_map->placa_catalunya, 4);
+	barcelona->room_map->monjuic_palace->north.set_connection(true, true, true, barcelona->room_map->sants, 2);
 		//Sants
-	barcelona->room_map->sants->east.set_connection(true, false, barcelona->room_map->placa_catalunya, 3);
-	barcelona->room_map->sants->west.set_connection(true, true, barcelona->room_map->camp_nou, 2);
-	barcelona->room_map->sants->south.set_connection(true, true, barcelona->room_map->monjuic_palace, 2);
+	barcelona->room_map->sants->east.set_connection(true, false, false, barcelona->room_map->placa_catalunya, 3);
+	barcelona->room_map->sants->west.set_connection(true, true, false, barcelona->room_map->camp_nou, 2);
+	barcelona->room_map->sants->south.set_connection(true, true, true, barcelona->room_map->monjuic_palace, 2);
 		//Camp Nou
-	barcelona->room_map->camp_nou->east.set_connection(true, false, barcelona->room_map->sagrada_familia, 6);
-	barcelona->room_map->camp_nou->south.set_connection(true, true, barcelona->room_map->sants, 2);
+	barcelona->room_map->camp_nou->east.set_connection(true, false, false, barcelona->room_map->sagrada_familia, 6);
+	barcelona->room_map->camp_nou->south.set_connection(true, true, false, barcelona->room_map->sants, 2);
 		//Parc Guell
-	barcelona->room_map->parc_guell->south.set_connection(true, false, barcelona->room_map->sagrada_familia, 3);
+	barcelona->room_map->parc_guell->south.set_connection(true, false, false, barcelona->room_map->sagrada_familia, 3);
 
 	//Creating the player and positioning the player in the bedroom
 	barcelona->character = new Player(barcelona->room_map->bedroom);
@@ -198,6 +198,7 @@ void GameLoop(World* barcelona){
 						}
 						break;
 			case open_door: cout << open_connection(barcelona->character->actual) << endl; room_changed = false; break;
+			case close_door: cout << close_connection(barcelona->character->actual) << endl; room_changed = false; break;
 			case not_recognised: cout << endl << "I don't recognise that order." << endl; room_changed = false; break;
 			case look_arround: look_room(barcelona->character->actual); room_changed = false; break;
 			case help: print_help(); room_changed = false; break;

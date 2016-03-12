@@ -11,9 +11,13 @@ bool can_move(actions direction, Room* actual_room);
 
 bool no_closed(actions direction, Room* next_room);
 
+bool can_be_closed(actions direction, Room* actual_room);
+
 void look_room(Room* actual_room);
 
 std::string open_connection(Room* actual_room);
+
+std::string close_connection(Room* actual_room);
 
 bool is_a_direction(actions interpreted);
 

@@ -10,7 +10,7 @@ void CleanWorld(World* barcelona);
 void GameLoop(World* barcelona);
 
 enum actions {
-	north, south, east, west, quit, open_door, look_arround, help, not_recognised
+	north, south, east, west, quit, open_door, close_door, look_arround, help, not_recognised
 };
 
 #endif
