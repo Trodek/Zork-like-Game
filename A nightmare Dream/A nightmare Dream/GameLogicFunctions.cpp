@@ -199,9 +199,9 @@ string close_connection(Room* actual_room){
 					}
 						break;
 					}
-					return "The door is close now.";
+					return "The door is closed now.";
 				}
-				else return "This door can't be closed.";
+				else return "This direction can't be closed.";
 			}
 			else return "The door is already closed.";
 		}

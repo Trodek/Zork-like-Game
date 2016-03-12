@@ -115,7 +115,7 @@ void CleanWorld(World* barcelona){
 
 void GameLoop(World* barcelona){
 
-	cout << "Welcome to A Nightmare Dream. A text base adventure based in Barcelona." << endl;
+	cout << endl << "			Welcome to A Nightmare Dream." << endl << "			   A text base adventure." << endl;
 	print_help();
 
 	bool end = false;
