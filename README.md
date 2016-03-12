@@ -4,7 +4,7 @@ A nightmare dream is a text based game that takes place in Barcelona. The game i
 
 The story is based in a strange phenomenon that Marc, a 19 years old student that lives in Barcelona, experimented. He was tired of the same routine and wishes to be alone and do what he pleases, but sometimes, your dreams can become true and your worst nightmare.
 
-You are in the skin of Marc, you wake up in your bedroom and realize you are alone and any type of technology isn’t working. The only thing you find is a message in your PC screen that introduce you to this mystery. A mystery that will make you visit some of the most important places of the city to solve it and escape from this nightmare.
+You are in the skin of Marc, you wake up in your bedroom and realize you are alone and any type of technology isnâ€™t working. The only thing you find is a message in your PC screen that introduce you to this mystery. A mystery that will make you visit some of the most important places of the city to solve it and escape from this nightmare.
 
 #Game version
 
@@ -24,7 +24,7 @@ To look arround a room, you can use "look" or "look arround".
 
 To open a door, you first need to write the order "open" or "open door" and then a direction will be requested (the direction can be introduced as explained before).
 
-To close a door, you must follow the same structure: "close" or close door" and then the a direction will be requested.
+To close a door, you must follow the same structure: "close" or "close door" and then the a direction will be requested.
 
 To exit the game, you can use "exit", "quit" or "q" orders.
 
