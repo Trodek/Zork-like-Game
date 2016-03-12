@@ -8,10 +8,10 @@
 using namespace std;
 
 actions interpret_input(const string input){
-	if (input == "n" || input == "north" || input == "go north") return north;
-	else if (input == "s" || input == "south" || input == "go south") return south;
-	else if (input == "e" || input == "east" || input == "go east") return east;
-	else if (input == "w" || input == "west" || input == "go west") return west;
+	if (input == "n" || input == "north" || input == "go north" || input == "go n") return north;
+	else if (input == "s" || input == "south" || input == "go south" || input == "go s") return south;
+	else if (input == "e" || input == "east" || input == "go east" || input == "go e") return east;
+	else if (input == "w" || input == "west" || input == "go west" || input == "go w") return west;
 	else if (input == "q" || input == "quit" || input == "exit") return quit;
 	else if (input == "open door" || input == "open") return open_door;
 	else if (input == "look arround" || input == "look") return look_arround;

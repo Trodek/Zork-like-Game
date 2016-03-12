@@ -12,11 +12,12 @@ The current version of the game, allows you to move between rooms and open door 
 
 ##How to play
 
-(All the orders can be written in upper or lower case).
+(All the orders can be written in uppercase, lowercase or mixed).
 
 To move arround the rooms you can use any of this orders:
 * The first leter of the direction (n/e/w/s).
 * The name of the direction (north/east/west/south).
+* The verb "go" followed by the first letter of the direction (go n/go e/go w/go s).
 * The verb "go" followed by a direction name (go north/go east/go west/go south).  
 
 To exit the game, you can use "exit", "quit" or "q" orders.
