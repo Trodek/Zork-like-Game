@@ -1,4 +1,4 @@
-﻿#A Nightmare Dream
+﻿#A Nightmare Dream 
 
 A nightmare dream is a text based game that takes place in Barcelona. The game is based in Zork.
 
@@ -53,3 +53,7 @@ To exit the game, you can use "quit" or "q" orders.
 #Author
 
 Iban Mas Ortega (GitHub: https://github.com/Trodek)
+
+###GitHub Repository
+
+https://github.com/Trodek/Zork-like-Game
