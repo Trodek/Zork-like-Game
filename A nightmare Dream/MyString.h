@@ -111,7 +111,7 @@ public:
 	}
 
 	void tolowercase(){
-		for (int i = 0; i < size - 1; i++){
+		for (uint i = 0; i < size - 1; i++){
 			text[i] = tolower(text[i]);
 		}
 	}

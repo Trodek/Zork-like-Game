@@ -27,6 +27,8 @@ int main(){
 
 	delete Game;
 
+	printf("\nPress enter to exit...");
+	getchar();
 	return 0;
 }
 

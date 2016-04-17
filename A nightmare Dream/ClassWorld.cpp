@@ -41,7 +41,7 @@ World::World(){
 	//Items
 
 	Item* Backpack = new Item("inventory", "Seems Doraemon's magic pocket. Everything can be put inside.");
-	Item* Message = new Item("message", "WRITE THE MESSAGE", false, false, bedroom); //// 　　　　　　　　　　　　　　　　　　　　　　MESSAGE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+	Item* Message = new Item("message", "Hi Marc,\nThis is your dream, be alone in the world. But maybe you realize that this is \nnot better than your normal life.\nIf you want to return to your normal life you must complete the puzzle this \nworld have.\nTip: Dont forget to eat.\nGood Luck", false, false, bedroom); 
 	Item* RWardrobe = new Item("mywardrobe", "My wardrobe, I usually have some usefull things inside.", true,false, bedroom);
 	Item* lantern = new Item("lantern", "Shit, doesn't have batteries.", true, true, RWardrobe);
 	Item* stove = new Item("stove", "I'm lucky that it works with fuel and not with electricity. I can use it to prepare some food.", true, false, kitchen);
@@ -49,47 +49,47 @@ World::World(){
 	Item* water = new Item("water", "A bottle of water.", false, true, kitchen, 4);
 	Item* cereal = new Item("cereals", "This are the Chocokrispies my mum eat every day.", false, true, kitchen, 10);
 	Item* PWardrobe = new Item("parentswardrobe", "My parents wardrobe. I'm not sure about looking inside.", true, false, parents);
-	Item* housekey = new Item("key", "This key looks like the house key.", false, true, PWardrobe);
+	Item* housekey = new Item("key1", "This key looks like the house key.", false, true, PWardrobe);
 	Item* condom = new Item("condom", "Uggh! FUCK, IT'S USED!!!", true, true, PWardrobe);
 	Item* bag = new Item("bag", "I can't get it, it is hanging from a Sagrada Familia's tower.", true, false, sagradafamilia);
-	Item* paw1 = new Item("paw", "A drake paw.", false, false, bag);
+	Item* paw1 = new Item("frontleftpaw", "A drake paw.", false, true, bag); 
 	Item* stairs = new Item("stairs", "They look strange without the drake", true, false, parcguell);
 	Item* redcar = new Item("ferrari", "This car look awesome, I wish I can have one some day.", true, false, glories);
 	Item* bluecar = new Item("ibiza", "This Seat isn't awesome, I don't like it.", true, false, glories);
 	Item* yellowcar = new Item("golf", "This Volkswagen car is OK.", true, false, glories);
 	Item* whitecar = new Item("q5", "This is my mum car, maybe she was going to work.", true, false, glories);
 	Item* blackcar = new Item("murcielago", "Lamborghini cars are beautiful.", true, false, glories);
-	Item* paw2 = new Item("paw", "A drake paw.", false, true, yellowcar);
-	Item* liceukey = new Item("key", "This key looks old.", false, true, bluecar);
+	Item* paw2 = new Item("frontrightpaw", "A drake paw.", false, true, yellowcar); 
+	Item* liceukey = new Item("key2", "This key looks old.", false, true, bluecar);
 	Item* chest = new Item("chest", "An rusty chest.", true, true, parcciutadella);
-	Item* tail = new Item("tail", "The drake tail.", false, true, chest);
-	Item* cement = new Item("cement", "Used to build things.", false, true, harbor);
+	Item* tail = new Item("tail", "The drake tail.", false, true, chest); 
+	Item* cement = new Item("cement", "Used to build things.", false, true, harbor); 
 	Item* ship = new Item("ship", "A fisherman ship.", true, false, harbor);
 	Item* batteries = new Item("batteries", "This batteris are usefull for the lantern.", false, true, ship);
 	Item* piano = new Item("piano", "This piano look so expensive.", true, true, liceu);
 	Item* violin = new Item("violin", "This is an Stradivarius, is awesome to see one before die.", true, true, liceu);
-	Item* popcorn = new Item("popcorn", "Someone forgot to eat his popcorn.", false, true, liceu, 8);
-	Item* body = new Item("body", "The drake body.", false, true, piano);
-	Item* key = new Item("key", "An old golden key.", false, true, violin);
+	Item* popcorn = new Item("popcorn", "Someone forgot to eat his popcorn.", false, true, liceu, 6);
+	Item* body = new Item("body", "The drake body.", false, true, piano); 
+	Item* key = new Item("key3", "An old golden key.", false, true, violin);
 	Item* shopbag = new Item("shopbag", "Someone left his shopings here", true, true, catalunya);
 	Item* meat = new Item("meat", "A steak. I can cook it.", false, true, shopbag);
 	Item* fish = new Item("fish", "A sardine. Cooked will be tasty.", false, true, shopbag);
-	Item* potatoes = new Item("potatoes", "I prefer Lay's but Mercadona ones are OK too.", false, true, shopbag, 15);
-	Item* salat = new Item("salat", "I don't like vegetables but are better than nothing.", false, true, shopbag, 18);
+	Item* potatoes = new Item("potatoes", "I prefer Lay's but Mercadona ones are OK too.", false, true, shopbag, 8);
+	Item* salat = new Item("salat", "I don't like vegetables but are better than nothing.", false, true, shopbag, 13);
 	Item* battery = new Item("batteries", "Some batteries, they will fit in a lantern.", false, true, shopbag);
 	Item* eggs = new Item("eggs", "Chicken eggs", false, true, shopbag);
-	Item* cmeat = new Item("steak", "This cooked steak smells well.", false, true, nullptr, 30);
-	Item* cfish = new Item("fried-fish", "All type of food taste better fried.", false, true, nullptr, 25);
-	Item* omelette = new Item("omelet", "An spanish omelette.", false, true, nullptr, 20);
+	Item* cmeat = new Item("steak", "This cooked steak smells well.", false, true, nullptr, 20);
+	Item* cfish = new Item("fried-fish", "All type of food taste better fried.", false, true, nullptr, 15);
+	Item* omelette = new Item("omelet", "An spanish omelette.", false, true, nullptr, 17);
 	Item* hat = new Item("cap", "This cap is strange. Why have a duck head glued in the front?", false, true, catalunya);
 	Item* crown = new Item("crown", "An old XVth century crown.", true, true, montjuic);
-	Item* head = new Item("head", "A drake head.", false, true, crown);
+	Item* head = new Item("head", "A drake head.", false, true, crown); 
 	Item* chocolate = new Item("chocolate", "A chocolate bar.", false, true, sants, 6);
-	Item* paw3 = new Item("paw", "A drake paw.", false, true, sants);
+	Item* paw3 = new Item("backleftpaw", "A drake paw.", false, true, sants); 
 	Item* bench = new Item("bench", "THAT'S FCB BENCH, I NEVER THOUGHT I CAN BE HERE ONE DAY.", true, false, campnou);
 	Item* ballnet = new Item("ballnet", "A net full of FCB balls.", true, false, campnou);
 	Item* ball = new Item("ball", "A FCB ball.", false, true, ballnet);
-	Item* paw4 = new Item("paw", "A drake paw.", false, true, bench);
+	Item* paw4 = new Item("backrightpaw", "A drake paw.", false, true, bench); 
 	Item* drake = new Item("drake", "The camplete drake.", true, true);
 
 	contain.PushBack(Backpack);
@@ -214,6 +214,30 @@ bool World::Play(){
 		printf("%s\n", player->GetActualRoom()->GetDescription());
 		first_loop = false;
 	}
+
+	// Check if loose
+	if (player->GetCurrentFood() <= 0){
+		printf("I'm too hungry to continue...\n");
+		printf("\n\n			You Lose.\n");
+		return true;
+	}
+
+	//Check if win
+	Item* stairs = nullptr;
+	for (int i = 0; i < Game->contain.size(); i++){
+		if (Game->contain[i]->GetType() == ITEM && Game->contain[i]->GetNameString() == "stairs"){
+			stairs = dynamic_cast<Item*> (Game->contain[i]);
+			break;
+		}
+	}
+	if (stairs->HaveItem(MyString("drake"))!=nullptr){
+		printf("\n\n'RIING''RIIING'\nWhat's that? Oh, my alarm cloack. Wait, what time is it?...6:30...\n");
+		printf("WOW... This nightmare was too real...\n\n\n");
+		printf("	CONGRATULATIONS! You save Marc from his nightmare dream.\n");
+		return true;
+	}
+
+	//ask for input
 	printf("\n>>What should I do?\n");
 
 	char temp[50];
@@ -304,6 +328,9 @@ bool World::CheckInput(dynArray<MyString>& words){
 			   }
 			   else if (words[0] == "cook"){
 				   player->Cook(words);
+			   }
+			   else if (words[0] == "create"){
+				   player->Create(words);
 			   }
 			   else printf("I don't understand that.");
 	}

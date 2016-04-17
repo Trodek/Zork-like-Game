@@ -11,7 +11,7 @@ private:
 	Item* wearing;
 	Room* actual_room;
 	Item* inventory;
-	int current_food = 50;
+	int current_food = 20;
 	
 public:
 
@@ -28,6 +28,8 @@ public:
 	Item* GetWearing()const { return wearing; }
 
 	Item* GetInventory()const { return inventory; }
+
+	int GetCurrentFood()const{ return current_food; }
 
 	void SetRoom(Room* new_room){ actual_room = new_room; }
 
@@ -48,6 +50,8 @@ public:
 	void Eat(dynArray<MyString>& words);
 
 	void Cook(dynArray<MyString>& words);
+
+	void Create(dynArray<MyString>& words);
 };
 
 #endif

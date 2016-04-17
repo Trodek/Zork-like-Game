@@ -143,7 +143,7 @@ void Player::Look(dynArray<MyString>& words){
 	Item* lantern=nullptr;
 	switch (words.size()){
 	case 1:{
-			   printf("I'm it the %s.\n%s", actual_room->GetName(),actual_room->GetDescription());
+			   printf("I'm in the %s.\n%s", actual_room->GetName(),actual_room->GetDescription());
 			   if (actual_room->GetNameString() == "Sants"){
 				   for (int i = 0; i < Game->contain.size(); i++){
 					   if (Game->contain[i]->GetNameString() == "lantern"){
@@ -153,7 +153,7 @@ void Player::Look(dynArray<MyString>& words){
 				   }
 				   if (wearing == lantern){
 					   if (lantern->HaveItem(MyString("batteries"))!=nullptr){
-						   printf("%s.\nWith the lantern light I can see: ", actual_room->GetDescription());
+						   printf("\nWith the lantern light I can see: ");
 						   for (int i = 0; i < Game->contain.size(); i++){
 							   if (Game->contain[i]->GetType() == ITEM){
 								   temp = dynamic_cast<Item*> (Game->contain[i]);
@@ -175,7 +175,7 @@ void Player::Look(dynArray<MyString>& words){
 				   }
 				   if (wearing == lantern){
 					   if (lantern->HaveItem(MyString("batteries")) != nullptr){
-						   printf("%s.\nWith the lantern light I can see: ", actual_room->GetDescription());
+						   printf("\nWith the lantern light I can see: ");
 						   for (int i = 0; i < Game->contain.size(); i++){
 							   if (Game->contain[i]->GetType() == ITEM){
 								   temp = dynamic_cast<Item*> (Game->contain[i]);
@@ -321,6 +321,7 @@ void Player::Cook(dynArray<MyString>& words){
 							if (Game->contain[i]->GetType() == ITEM&& Game->contain[i]->GetNameString() == "steak"){
 								cookfood = dynamic_cast<Item*> (Game->contain[i]);
 								cookfood->SetContainer(stove);
+								printf("Cook finished.\n");
 							}
 						}
 					}
@@ -330,6 +331,7 @@ void Player::Cook(dynArray<MyString>& words){
 							if (Game->contain[i]->GetType() == ITEM&& Game->contain[i]->GetNameString() == "fried-fish"){
 								cookfood = dynamic_cast<Item*> (Game->contain[i]);
 								cookfood->SetContainer(stove);
+								printf("Cook finished.\n");
 							}
 						}
 					}
@@ -339,13 +341,56 @@ void Player::Cook(dynArray<MyString>& words){
 							if (Game->contain[i]->GetType() == ITEM&& Game->contain[i]->GetNameString() == "omelet"){
 								cookfood = dynamic_cast<Item*> (Game->contain[i]);
 								cookfood->SetContainer(stove);
+								printf("Cook finished.\n");
 							}
 						}
 					}
 					else printf("I can't cook that.\n");
 				}
+				else printf("The %s is not in the stove.\n", words[1].c_str());
 			}
 		}
 	}
 	else printf("I can't cook this room.\n");
+}
+
+void Player::Create(dynArray<MyString>& words){
+	Item* paw1 = nullptr;
+	Item* paw2 = nullptr;
+	Item* paw3 = nullptr;
+	Item* paw4 = nullptr;
+	Item* head = nullptr;
+	Item* body = nullptr;
+	Item* tail = nullptr;
+	Item* cement = nullptr;
+	Item* drake = nullptr;
+	if (words[1] == "drake"){
+		paw1 = inventory->HaveItem(MyString("frontleftpaw"));
+		paw2 = inventory->HaveItem(MyString("frontrightpaw"));
+		paw3 = inventory->HaveItem(MyString("backleftpaw"));
+		paw4 = inventory->HaveItem(MyString("backrightpaw"));
+		head = inventory->HaveItem(MyString("head"));
+		tail = inventory->HaveItem(MyString("tail"));
+		body = inventory->HaveItem(MyString("body"));
+		cement = inventory->HaveItem(MyString("cement"));
+		if (paw1 && paw2 && paw3 && paw4 && head && tail && body && cement){
+			for (int i = 0; i < Game->contain.size(); i++){
+				if (Game->contain[i]->GetNameString() == "drake"){
+					drake = dynamic_cast<Item*> (Game->contain[i]);
+					drake->SetContainer(inventory);
+					paw1->SetContainer(drake);
+					paw2->SetContainer(drake);
+					paw3->SetContainer(drake);
+					paw4->SetContainer(drake);
+					body->SetContainer(drake);
+					head->SetContainer(drake);
+					tail->SetContainer(drake);
+					cement->SetContainer(drake);
+					printf("I create the Drake!!!\n");
+					break;
+				}
+			}
+		}
+	}
+	else printf("I can't create that.\n");
 }

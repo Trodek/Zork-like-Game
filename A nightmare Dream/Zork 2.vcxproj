@@ -13,7 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{0359B63D-5104-4EFF-B0AD-28983D9CF66E}</ProjectGuid>
     <RootNamespace>Zork2</RootNamespace>
-    <ProjectName>Zork</ProjectName>
+    <ProjectName>A Nightmare Dream</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
