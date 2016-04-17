@@ -14,7 +14,7 @@ private:
 public:
 
 	//Constructor
-	Item(const char* name, const char* des, bool contain = true, bool use = false, Entity* the_container = nullptr, int regen = 0) : Entity(name, des, ITEM),
+	Item(const char* name, const char* des, bool contain = true, bool use = false, Entity* the_container = nullptr, int regen = NULL) : Entity(name, des, ITEM),
 		can_contain(contain), pickable(use), container(the_container), food_regen(regen){}
 
 	~Item(){}
@@ -27,6 +27,8 @@ public:
 	bool GetPickable()const{ return pickable; }
 
 	bool GetCanContain()const{ return can_contain; }
+
+	Item* HaveItem(MyString& other);
 
 
 };

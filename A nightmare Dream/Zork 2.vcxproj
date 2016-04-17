@@ -76,6 +76,7 @@
     <ClInclude Include="MyString.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="ClassItem.cpp" />
     <ClCompile Include="ClassRoom.cpp" />
     <ClCompile Include="ClassPlayer.cpp" />
     <ClCompile Include="ClassWorld.cpp" />

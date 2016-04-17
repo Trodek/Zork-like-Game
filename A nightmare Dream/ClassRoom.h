@@ -6,17 +6,13 @@
 
 
 class Room : public Entity{
-private:
-	Roomtype tag;
-
 public:
 	//Constructor
-	Room(const char* type, const char* info, Roomtype roomtag) : Entity(type, info, ROOM), tag(roomtag){}
+	Room(const char* type, const char* info) : Entity(type, info, ROOM){}
 
 	~Room(){}
 
 	//Methods
-	Roomtype GetTag()const{	return tag;	}
 	Connection* GetConnection(MyString& direction);
 };
 

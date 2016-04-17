@@ -40,7 +40,9 @@ public:
 	
 	void Drop(dynArray<MyString>& words);
 
+	void Equip(dynArray<MyString>& words);
 
+	void Unquip();
 };
 
 #endif
