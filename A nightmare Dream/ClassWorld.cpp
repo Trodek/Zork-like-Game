@@ -118,7 +118,7 @@ World::World(){
 	contain.PushBack(new Connection(false, true, parents, kitchen, MyString("north"), 1, nullptr));
 		//house street
 	contain.PushBack(new Connection(true, true, hstreet, kitchen, MyString("east"), 1, housekey));
-	contain.PushBack(new Connection(false, true, hstreet, sagradafamilia, MyString("west"), 2, nullptr));
+	contain.PushBack(new Connection(false, true, hstreet, sagradafamilia, MyString("south"), 2, nullptr));
 		//sagrada familia
 	contain.PushBack(new Connection(false, false, sagradafamilia, hstreet, MyString("east"), 2, nullptr));
 	contain.PushBack(new Connection(false, false, sagradafamilia, parcguell, MyString("north"), 3, nullptr));
@@ -166,7 +166,12 @@ World::~World(){
 
 bool World::Play(){
 
-	printf("\n%s\n", player->GetActualRoom()->GetName());
+	if (first_loop){
+		printf("\n%s\n", player->GetActualRoom()->GetName());
+		printf("%s\n", player->GetActualRoom()->GetDescription());
+		first_loop = false;
+	}
+	printf("\n>>What should I do?\n");
 
 	char temp[50];
 	fgets(temp, 50, stdin);
@@ -174,9 +179,7 @@ bool World::Play(){
 	input.tolowercase();
 	dynArray<MyString> words;
 	input.Tokenize(' ', words);
-
-
-	
+	printf("\n");
 	if (words[0] == "quit"|| words[0]=="q")return true;
 	return CheckInput(words);
 	
@@ -216,7 +219,7 @@ bool World::CheckInput(dynArray<MyString>& words){
 					words.PushBack(temp);
 					player->Look(words);
 				}
-
+				else printf("I don't understand that.");
 				
 		}
 		break;
@@ -241,12 +244,20 @@ bool World::CheckInput(dynArray<MyString>& words){
 			   else if (words[0] == "look"){
 				   player->Look(words);
 			   }
+			   else if (words[0] == "drop" || words[0] == "throw"){
+				   player->Drop(words);
+			   }
+			   else printf("I don't understand that.");
 	}
 		break;
 	case 4:{
 			   if (words[0] == "pick"|| words[0]=="get"){
 				   player->Pick(words);
 			   }
+			   else if (words[0] == "drop" || words[0] == "put"){
+				   player->Drop(words);
+			   }
+			   else printf("I don't understand that.");
 	}
 		break;
 	}

@@ -11,6 +11,7 @@ private:
 	Item* wearing;
 	Room* actual_room;
 	Item* inventory;
+	int current_food = 50;
 	
 public:
 
@@ -36,6 +37,10 @@ public:
 	void ChangeDoor(dynArray<MyString>& words);
 
 	void Look(dynArray<MyString>& words);
+	
+	void Drop(dynArray<MyString>& words);
+
+
 };
 
 #endif

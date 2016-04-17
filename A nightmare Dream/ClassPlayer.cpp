@@ -9,7 +9,12 @@ void Player::Go(dynArray<MyString>& words){
 	if (words.size() > (uint) 1){
 		Connection* temp = actual_room->GetConnection(words[1]);
 		if (temp != nullptr && temp->GetDirection()==words[1]){
-			if (!temp->GetClosed())	actual_room = temp->GetNextRoom();
+			if (!temp->GetClosed())	{
+				actual_room = temp->GetNextRoom();
+				current_food -= temp->GetFoodConsumed();
+				printf("I'm in the %s.\n", temp->GetNextRoom()->GetName());
+				printf("Food left: %d.\n", current_food);
+			}
 			else printf("Door is closed\n");
 		}
 		else printf("There is no room in direction %s.\n", words[1].c_str());
@@ -18,6 +23,9 @@ void Player::Go(dynArray<MyString>& words){
 		Connection* temp = actual_room->GetConnection(words[0]);
 		if (temp != nullptr&& temp->GetDirection() == words[0]){
 			actual_room = temp->GetNextRoom();
+			current_food -= temp->GetFoodConsumed();
+			printf("I'm in the %s.\n", temp->GetNextRoom()->GetName());
+			printf("Food left: %d.\n", current_food);
 		}
 		else printf("There is no room in direction %s.\n", words[0].c_str());
 	}
@@ -144,7 +152,7 @@ void Player::Look(dynArray<MyString>& words){
 			   for (int i = 0; i < Game->contain.size(); i++){
 				   if (Game->contain[i]->GetType() == ITEM && Game->contain[i]->GetNameString() == words[1]){
 					   temp = dynamic_cast<Item*> (Game->contain[i]);
-					   if (temp->GetContainer() == actual_room|| temp->GetContainer()==inventory){
+					   if (temp->GetContainer() == actual_room|| temp->GetContainer()==inventory|| temp == inventory){
 						   printf("%s\n", temp->GetDescription());
 						   if (temp->GetCanContain()){
 							   printf("The %s contains: ", temp->GetName());
@@ -159,6 +167,52 @@ void Player::Look(dynArray<MyString>& words){
 				   }
 			   }
 	}
+		break;
+	}
+	printf("\n");
+}
+
+void Player::Drop(dynArray<MyString>& words){
+	Item* temp;
+	switch (words.size())
+	{
+	case 2:{
+			   for (int i = 0; i < Game->contain.size(); i++){
+				   if (Game->contain[i]->GetNameString() == words[1] && Game->contain[i]->GetType() == ITEM){
+					   temp = dynamic_cast<Item*> (Game->contain[i]);
+					   if (temp->GetContainer() == inventory){
+						   temp->SetContainer(actual_room);
+						   printf("I droped %s to the room.", temp->GetName());
+					   }
+					   else printf("I don't have %s in the inventory.", words[1].c_str());
+				   }
+			   }
+		}
+		break;
+	case 4:{
+			   for (int i = 0; i < Game->contain.size(); i++){
+				   if (Game->contain[i]->GetNameString() == words[1] && Game->contain[i]->GetType() == ITEM){
+					   temp = dynamic_cast<Item*> (Game->contain[i]);
+					   if (temp->GetContainer() == inventory){
+						   Item* new_container;
+						   for (int i = 0; i < Game->contain.size(); i++){
+							   if (Game->contain[i]->GetNameString() == words[3] && Game->contain[i]->GetType() == ITEM){
+								   new_container = dynamic_cast<Item*> (Game->contain[i]);
+								   if (new_container->GetContainer() == actual_room|| new_container->GetContainer()==inventory) {
+									   if (new_container->GetCanContain()){
+										   temp->SetContainer(new_container);
+										   printf("I put %s into the %s.", temp->GetName(), new_container->GetName());
+									   }
+									   else printf("The %s can not contain other items.", new_container->GetName());
+								   }
+								   else printf("The %s is neither in the room nor my inventory.", new_container->GetName());
+							   }
+						   }
+					   }
+					   else printf("I don't have %s in the inventory.", words[1].c_str());
+				   }
+			   }
+		}
 		break;
 	}
 	printf("\n");

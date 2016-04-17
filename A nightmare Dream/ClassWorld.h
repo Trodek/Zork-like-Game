@@ -5,9 +5,9 @@ class Entity;
 class Player;
 
 class World :public Entity{
-public:
+private:
 	Player* player;
-	World* me = this;
+	bool first_loop=true;
 public:
 	//Constructor
 	World();
