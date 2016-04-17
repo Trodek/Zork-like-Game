@@ -20,6 +20,7 @@ public:
 		inventory(inv), actual_room(room){}
 
 	~Player(){}
+
 	//Methods
 
 	Room* GetActualRoom()const { return actual_room; }
@@ -43,6 +44,10 @@ public:
 	void Equip(dynArray<MyString>& words);
 
 	void Unquip();
+
+	void Eat(dynArray<MyString>& words);
+
+	void Cook(dynArray<MyString>& words);
 };
 
 #endif

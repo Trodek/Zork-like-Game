@@ -34,43 +34,57 @@ void Player::Go(dynArray<MyString>& words){
 void Player::Pick(dynArray<MyString>& words){
 	Item* temp;
 	bool picked = false;
-	if (words.size() == (uint)2){
-		for (int i = 0; i < Game->contain.size(); i++){
-			if (Game->contain[i]->GetType() == ITEM){
-				temp = dynamic_cast<Item*> (Game->contain[i]);
-				if (temp->GetContainer() == actual_room && temp->GetNameString() == words[1]){
-					if (temp->GetPickable()){
-						temp->SetContainer(inventory);
-						picked = true;
-						break;
-					}
-					else printf("The %s can not be picked.", temp->GetName());
-				}
-				else printf("The %s is not in this room.", words[1].c_str());
-			}
-		}
+	switch (words.size()){
+	case 2:{
+			   for (int i = 0; i < Game->contain.size(); i++){
+				   if (Game->contain[i]->GetType() == ITEM){
+					   temp = dynamic_cast<Item*> (Game->contain[i]);
+					   if (temp->GetContainer() == actual_room && temp->GetNameString() == words[1]){
+						   if (temp->GetPickable()){
+							   temp->SetContainer(inventory);
+							   picked = true;
+							   break;
+						   }
+						   else{
+							   printf("The %s can not be picked.\n", temp->GetName());
+							   return;
+						   }
+					   }
+				   }
+			   }
 	}
-	else if (words.size() == (uint)4){
-		Item* container;
-		for (int i = 0; i < Game->contain.size(); i++){
-			if (Game->contain[i]->GetNameString() == words[3] && Game->contain[i]->GetType() == ITEM) {
-				container = dynamic_cast<Item*>(Game->contain[i]);
-				if (container->GetContainer() != actual_room) printf("The %s is not in this room.", container->GetName());
-				else{
-					temp = container->HaveItem(words[1]);
-						if (temp!=nullptr){
-							temp->SetContainer(inventory);
-							picked = true;
-							break;
-						}
-						else printf("The %s doesn't contain %s.", container->GetName(), words[1].c_str());
-					}
-			}
-		}
+		break;
+	case 4:{
+			   Item* container;
+			   for (int i = 0; i < Game->contain.size(); i++){
+				   if (Game->contain[i]->GetNameString() == words[3] && Game->contain[i]->GetType() == ITEM) {
+					   container = dynamic_cast<Item*>(Game->contain[i]);
+					   if (container->GetContainer() != actual_room && container->GetContainer() != inventory) 
+						   printf("The %s is not in this room.", container->GetName());
+					   else{
+						   temp = container->HaveItem(words[1]);
+						   if (temp != nullptr){
+							   temp->SetContainer(inventory);
+							   picked = true;
+							   break;
+						   }
+						   else {
+							   printf("The %s doesn't contain %s.\n", container->GetName(), words[1].c_str());
+							   return;
+						   }
+					   }
+				   }
+			   }
 	}
-
+		break;
+	default:{
+				printf("I don't understand that.\n");
+				return;
+	}
+		break;
+	}
 	if(picked) printf("The %s is now in your %s.\n", words[1].c_str(), inventory->GetName());
-	//else printf("The item %s is not there or can not be picked.\n", words[1].c_str());
+	else printf("The item %s is not there or can not be picked.\n", words[1].c_str());
 }
 
 void Player::ChangeDoor(dynArray<MyString>& words){
@@ -275,4 +289,63 @@ void Player::Unquip(){
 		wearing = nullptr;
 	}
 	else printf("I don't have something equiped.\n");
+}
+
+void Player::Eat(dynArray<MyString>& words){
+	Item* temp;
+	temp = inventory->HaveItem(words[1]);
+	if (temp != nullptr){
+		if (temp->GetFoodRegen() > 0){
+			current_food += temp->GetFoodRegen();
+			temp->SetContainer(nullptr);
+			printf("Eating %s, I regen %d food.\nCurrentFood: %d.\n", temp->GetName(), temp->GetFoodRegen(), current_food);
+		}
+		else printf("I can't eat %s.\n", temp->GetName());
+	}
+	else printf("I dont have %s.", words[1].c_str());
+	
+}
+
+void Player::Cook(dynArray<MyString>& words){
+	Item* stove;
+	if (actual_room->GetNameString() == "Kitchen"){
+		for (int i = 0; i < Game->contain.size(); i++){
+			if (Game->contain[i]->GetType() == ITEM && Game->contain[i]->GetNameString() == "stove"){
+				stove = dynamic_cast<Item*> (Game->contain[i]);
+				Item* food;
+				Item* cookfood;
+				if ((food=stove->HaveItem(words[1]))!=nullptr){
+					if (words[1] == "meat"){
+						food->SetContainer(nullptr);
+						for (int i = 0; i < Game->contain.size(); i++){
+							if (Game->contain[i]->GetType() == ITEM&& Game->contain[i]->GetNameString() == "steak"){
+								cookfood = dynamic_cast<Item*> (Game->contain[i]);
+								cookfood->SetContainer(stove);
+							}
+						}
+					}
+					else if (words[1] == "fish"){
+						food->SetContainer(nullptr);
+						for (int i = 0; i < Game->contain.size(); i++){
+							if (Game->contain[i]->GetType() == ITEM&& Game->contain[i]->GetNameString() == "fried-fish"){
+								cookfood = dynamic_cast<Item*> (Game->contain[i]);
+								cookfood->SetContainer(stove);
+							}
+						}
+					}
+					else if (words[1] == "eggs"){
+						food->SetContainer(nullptr);
+						for (int i = 0; i < Game->contain.size(); i++){
+							if (Game->contain[i]->GetType() == ITEM&& Game->contain[i]->GetNameString() == "omelet"){
+								cookfood = dynamic_cast<Item*> (Game->contain[i]);
+								cookfood->SetContainer(stove);
+							}
+						}
+					}
+					else printf("I can't cook that.\n");
+				}
+			}
+		}
+	}
+	else printf("I can't cook this room.\n");
 }

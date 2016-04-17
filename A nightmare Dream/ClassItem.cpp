@@ -7,7 +7,7 @@ Item* Item::HaveItem(MyString& other){
 	for (int i = 0; i < Game->contain.size(); i++){
 		if (Game->contain[i]->GetType() == ITEM){
 			temp = dynamic_cast<Item*> (Game->contain[i]);
-			if (temp->GetContainer()== this){
+			if (temp->GetContainer()== this && temp->GetNameString()==other){
 				return temp;
 			}
 		}

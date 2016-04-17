@@ -28,6 +28,8 @@ public:
 
 	bool GetCanContain()const{ return can_contain; }
 
+	int GetFoodRegen()const{ return food_regen; };
+
 	Item* HaveItem(MyString& other);
 
 

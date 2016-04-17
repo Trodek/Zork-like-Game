@@ -193,6 +193,8 @@ World::World(){
 		//camp nou
 	contain.PushBack(new Connection(true, true, campnou, sants, MyString("south"), 2, nullptr)); 
 	contain.PushBack(new Connection(false, false, campnou, sagradafamilia, MyString("east"), 6, nullptr)); 
+		//parc guell
+	contain.PushBack(new Connection(false, false, parcguell, sagradafamilia, MyString("south"), 3, nullptr));
 
 
 
@@ -296,6 +298,12 @@ bool World::CheckInput(dynArray<MyString>& words){
 			   }
 			   else if (words[0] == "unequip"){
 				   player->Unquip();
+			   }
+			   else if (words[0] == "eat"){
+				   player->Eat(words);
+			   }
+			   else if (words[0] == "cook"){
+				   player->Cook(words);
 			   }
 			   else printf("I don't understand that.");
 	}
