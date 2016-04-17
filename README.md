@@ -1,4 +1,4 @@
-#A Nightmare Dream
+﻿#A Nightmare Dream
 
 A nightmare dream is a text based game that takes place in Barcelona. The game is based in Zork.
 
@@ -8,7 +8,10 @@ You are in the skin of Marc, you wake up in your bedroom and realize you are alo
 
 #Game version
 
-The current version of the game, allows you to move between rooms and open door if they are closed (you don't need any key or object to do that). You can also look arround the room to get more information about the exits of each room.
+The current version of the game, allows you to move between rooms and open/close door if they are opened/closed and have the key (if needed). You can also look arround the room to get more information about the exits, and items it have.
+You can pick/drop items from the room, get and put items from/inside others and create the drake.
+Take care about your food or you will die, eat and cook food to continue alive.
+You can equip one item and unequip it.
 
 ##How to play
 
@@ -20,23 +23,31 @@ To move arround the rooms you can use any of this orders:
 * The verb "go" followed by the first letter of the direction (go n/go e/go w/go s).
 * The verb "go" followed by a direction name (go north/go east/go west/go south).  
 
-To look arround a room, you can use "look" or "look arround".
+To look arround a room, you can use "look". To look other items in the room or inventory use "look <item>".
 
-To open a door, you first need to write the order "open" or "open door" and then a direction will be requested (the direction can be introduced as explained before).
+You can access the inventory with "invetory"/"inv"/"i".
 
-To close a door, you must follow the same structure: "close" or "close door" and then the a direction will be requested.
+With "pick/get <item>" you can pick items from the current room. Use "pick/get <item> from <item>" to pick objects from other objects.
 
-To exit the game, you can use "exit", "quit" or "q" orders.
+You can drop/throw items in the room with "drop/throw <item>" or drop/put items into others using "drop/put <item> inside <item>"
+
+To open a door, you first need to write the order "open <direction>".
+
+To close a door, you must follow the same structure: "close <direction>".
+
+To eat, use: "eat <item>"
+
+For cooking something use: "cook <item>"
+
+Use "equip/unequip <item>" to equip or unequip an item.
+
+To create the drake use: "create <item>"
+
+To exit the game, you can use "quit" or "q" orders.
 
 #Next Coming Features
 
-* Player hunger system
-* Objects and inventory
 * Player scared
-* Cook food
-* Pick up objects
-* Combine statue parts
-* Keys for doors
 * UI improvement
 
 #Author
